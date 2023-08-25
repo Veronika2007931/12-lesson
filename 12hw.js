@@ -1,27 +1,24 @@
 function delayedPromise(value, delay){
-  return setTimeout(()=>{
-     Promise.reject(value)
-   }, delay)
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      resolve(value)
+      }, delay)
+  })
 }
 
 
-delayedPromise(300, 2000).then(succes => console.log(succes))
+// delayedPromise(300, 2000).then(succes => console.log(succes))
 
 const arr = [
-    delayedPromise(300, 2000)
-    .then(succes => console.log(succes)),
+    delayedPromise("hello", 2000),
 
-    delayedPromise("hello", 7000)
-    .then(succes => console.log(succes)), 
+    delayedPromise("hello", 4000), 
     
-    delayedPromise(500, 8000)
-    .then(succes => console.log(succes)),
+    delayedPromise('hello', 3000),
     
-    delayedPromise("Result", 5000)
-    .then(succes => console.log(succes)),
+    delayedPromise("Result", 5000),
     
-    delayedPromise("How are you", 3000)
-    .then(succes => console.log(succes)),
+    delayedPromise("How are you", 3000),
 ]
 
 Promise.all(arr)
@@ -29,16 +26,19 @@ Promise.all(arr)
 
 
 // №2
-function randomDelay(value){
-    const min = 1000
-    const max = 5000
-const number = Math.floor(Math.random() * (max - min + 1) + min)
+// function randomDelay(value){
+//     const min = 1000
+//     const max = 5000
+// const number = Math.floor(Math.random() * (max - min + 1) + min)
 
-setTimeout(()=>{
-    Promise.reject(value)
-}, number)
-}
+// new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//        resolve(value)
+//     }, number)
 
+    
+// })
+// }
 
 
 
