@@ -12,7 +12,7 @@ const arr = [
     .then(succes => console.log(succes)),
 
     delayedPromise("hello", 7000)
-    .then(succes => console.log(succes)),
+    .then(succes => console.log(succes)), 
     
     delayedPromise(500, 8000)
     .then(succes => console.log(succes)),
@@ -28,7 +28,16 @@ Promise.all(arr)
 .then(value => console.log(value))
 
 
+// №2
+function randomDelay(value){
+    const min = 1000
+    const max = 5000
+const number = Math.floor(Math.random() * (max - min + 1) + min)
 
+setTimeout(()=>{
+    Promise.reject(value)
+}, number)
+}
 
 
 
